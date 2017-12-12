@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_color2"
+    android:background="@drawable/background_color"
     tools:context="nf.iteris.com.br.iterisapp.ui.home_screen.HomeScreenActivity">
 
     <LinearLayout
@@ -36,7 +36,7 @@
         android:weightSum="2">
 
         <Button
-            android:background="@color/btnSignUp"
+            android:background="@drawable/background_button_two"
             android:id="@+id/home_screen_btn_signUp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -48,8 +48,7 @@
             />
 
         <Button
-
-            android:background="@color/btnSignActive"
+            android:background="@drawable/background_button"
             android:id="@+id/home_screen_btn_signIn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
