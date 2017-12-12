@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">OrganizaNF</string>
+    <string name="error_message_cpf">Digite o cpf</string>
+    <string name="error_message_name">Digite seu nome</string>
+    <string name="error_message_password">Digite uma senha</string>
+    <string name="success_message">Usuário cadastrado com sucesso</string>
+    <string name="error_not_sign_up">Erro ao cadastrar</string>
+    <string name="error_cpf_not_register">Cpf não cadastrado</string>
+    <string name="err_msg_cpf">Cpf digitado não é valido</string>
     <string name="home_screen_txt_slogan">Controle a antecipação de suas notas ficais com o novo aplicativo OrganizaNF. COm o aplicativo será possivel cadastrar, visualizar, pesquisar, solicitar, visualizar, aprovar ou reprovar antecipação de suas notas fiscais.</string>
 
 </resources>

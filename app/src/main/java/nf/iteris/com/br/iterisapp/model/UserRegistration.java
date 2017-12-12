@@ -8,12 +8,7 @@ public class UserRegistration {
     private String cpf;
     private String name;
     private String password;
-
-    public UserRegistration(String cpf, String name, String password) {
-        this.cpf = cpf;
-        this.name = name;
-        this.password = password;
-    }
+    private String profile;
 
     public String getCpf() {
         return cpf;
@@ -37,5 +32,13 @@ public class UserRegistration {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getProfile() {
+        return profile;
+    }
+
+    public void setProfile(String profile) {
+        this.profile = profile;
     }
 }

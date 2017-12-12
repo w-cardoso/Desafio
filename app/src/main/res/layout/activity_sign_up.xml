@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/sign_up_lot_rlt"
     android:background="@drawable/background_color"
     tools:context="nf.iteris.com.br.iterisapp.ui.sign_up.SignUpActivity">
 
@@ -23,7 +24,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp">
 
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:id="@+id/sign_up_edt_cpf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -39,12 +40,12 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp">
 
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:id="@+id/sign_up_edt_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Digite seu nome"
-                android:inputType="number"
+                android:inputType="textPersonName"
                 android:singleLine="true" />
         </android.support.design.widget.TextInputLayout>
 
@@ -55,12 +56,12 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp">
 
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:id="@+id/sign_up_edt_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Digite sua senha"
-                android:inputType="number"
+                android:inputType="textPassword"
                 android:singleLine="true" />
         </android.support.design.widget.TextInputLayout>
 
@@ -79,6 +80,7 @@
                 android:weightSum="2">
 
                 <RadioButton
+                    android:checked="true"
                     android:id="@+id/sign_up_rdb_profile_analista"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -88,6 +90,7 @@
                     android:textSize="20sp" />
 
                 <RadioButton
+                    android:selectAllOnFocus="true"
                     android:id="@+id/sign_up_rdb_profile_gestor"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
