@@ -1,8 +1,8 @@
 package nf.iteris.com.br.iterisapp.ui.home_screen;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -22,10 +22,7 @@ public class HomeScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home_screen);
 
         getSupportActionBar().hide();
-
-        txtSlogan = (TextView) findViewById(R.id.home_screen_txt_slogan);
-        btnSignIn = (Button) findViewById(R.id.home_screen_btn_signIn);
-        btnSignUp = (Button) findViewById(R.id.home_screen_btn_signUp);
+        loadComponents();
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,5 +37,11 @@ public class HomeScreenActivity extends AppCompatActivity {
                 startActivity(new Intent(HomeScreenActivity.this, SignUpActivity.class));
             }
         });
+    }
+
+    private void loadComponents() {
+        txtSlogan = (TextView) findViewById(R.id.home_screen_txt_slogan);
+        btnSignIn = (Button) findViewById(R.id.home_screen_btn_signIn);
+        btnSignUp = (Button) findViewById(R.id.home_screen_btn_signUp);
     }
 }

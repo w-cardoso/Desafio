@@ -43,7 +43,7 @@
                 android:id="@+id/sign_up_edt_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Digite seu CPF"
+                android:hint="Digite seu nome"
                 android:inputType="number"
                 android:singleLine="true" />
         </android.support.design.widget.TextInputLayout>
@@ -59,7 +59,7 @@
                 android:id="@+id/sign_up_edt_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Digite seu CPF"
+                android:hint="Digite sua senha"
                 android:inputType="number"
                 android:singleLine="true" />
         </android.support.design.widget.TextInputLayout>
