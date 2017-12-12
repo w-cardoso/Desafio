@@ -1,4 +1,4 @@
-package nf.iteris.com.br.iterisapp.ui;
+package nf.iteris.com.br.iterisapp.ui.splash;
 
 import android.content.Intent;
 import android.os.Handler;
@@ -9,6 +9,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import nf.iteris.com.br.iterisapp.R;
+import nf.iteris.com.br.iterisapp.ui.home_screen.HomeScreenActivity;
 
 public class SplashActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package nf.iteris.com.br.iterisapp.ui;
+package nf.iteris.com.br.iterisapp.ui.home_screen;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import nf.iteris.com.br.iterisapp.R;
+import nf.iteris.com.br.iterisapp.ui.sign_up.SignUpActivity;
 
 public class HomeScreenActivity extends AppCompatActivity {
     private TextView txtSlogan;

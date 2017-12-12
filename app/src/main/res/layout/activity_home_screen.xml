@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_color2"
-    tools:context="nf.iteris.com.br.iterisapp.ui.HomeScreenActivity">
+    tools:context="nf.iteris.com.br.iterisapp.ui.home_screen.HomeScreenActivity">
 
     <LinearLayout
         android:layout_width="wrap_content"

@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/IterisNf.iml" filepath="$PROJECT_DIR$/IterisNf.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Desafio.iml" filepath="$PROJECT_DIR$/Desafio.iml" />
+      <module fileurl="file://C:\Desafio\Desafio\IterisNf.iml" filepath="C:\Desafio\Desafio\IterisNf.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Desafio\Desafio\app\app.iml" filepath="C:\Desafio\Desafio\app\app.iml" />
     </modules>
   </component>
 </project>
