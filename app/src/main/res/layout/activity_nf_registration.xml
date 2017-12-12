@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_color"
     tools:context="nf.iteris.com.br.iterisapp.ui.nf_registration.NfRegistrationActivity">
 
 
@@ -19,7 +20,7 @@
             android:layout_marginRight="16dp">
 
             <EditText
-                android:id="@+id/nf_registration_edt_name"
+                android:id="@+id/nf_registration_edt_numbernf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Digite o numero da tota fiscal"
@@ -81,10 +82,10 @@
         </android.support.design.widget.TextInputLayout>
 
         <Spinner
-            android:layout_margin="16dp"
             android:id="@+id/nf_registration_spn_status"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp" />
 
     </LinearLayout>
 

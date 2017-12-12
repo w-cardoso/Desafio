@@ -13,6 +13,7 @@
         android:gravity="center">
 
         <ImageView
+            android:src="@drawable/smartphone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -21,8 +22,9 @@
     </LinearLayout>
 
     <TextView
+        android:textSize="18sp"
         android:textColor="@color/colorWhite"
-        android:textStyle="bold"
+        android:textStyle="italic"
         android:gravity="center"
         android:text="Antecipação de notas fiscais"
         android:layout_width="match_parent"

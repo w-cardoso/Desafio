@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import nf.iteris.com.br.iterisapp.R;
+import nf.iteris.com.br.iterisapp.ui.login.LoginActivity;
 import nf.iteris.com.br.iterisapp.ui.sign_up.SignUpActivity;
 
 public class HomeScreenActivity extends AppCompatActivity {
@@ -29,7 +30,7 @@ public class HomeScreenActivity extends AppCompatActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //startActivity(new Intent(HomeScreenActivity.this, SignUpActivity.class));
+                startActivity(new Intent(HomeScreenActivity.this, LoginActivity.class));
             }
         });
 
