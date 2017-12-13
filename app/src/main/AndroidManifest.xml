@@ -19,7 +19,9 @@
         <activity android:name=".ui.home_screen.HomeScreenActivity" />
         <activity android:name=".ui.sign_up.SignUpActivity" />
         <activity android:name=".ui.login.LoginActivity" />
-        <activity android:name=".ui.list_nf.ListNfActivity" />
+        <activity
+            android:name=".ui.list_nf.ListNfActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity android:name=".ui.nf_registration.NfRegistrationActivity"></activity>
     </application>
 
