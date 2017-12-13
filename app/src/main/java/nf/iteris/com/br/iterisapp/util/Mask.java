@@ -1,4 +1,4 @@
-package nf.iteris.com.br.iterisapp;
+package nf.iteris.com.br.iterisapp.util;
 
 import android.text.Editable;
 import android.text.TextWatcher;

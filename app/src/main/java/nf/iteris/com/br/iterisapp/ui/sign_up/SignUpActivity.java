@@ -16,10 +16,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 
-import nf.iteris.com.br.iterisapp.InputValidation;
-import nf.iteris.com.br.iterisapp.Mask;
+import nf.iteris.com.br.iterisapp.util.InputValidation;
+import nf.iteris.com.br.iterisapp.util.Mask;
 import nf.iteris.com.br.iterisapp.R;
-import nf.iteris.com.br.iterisapp.Validator;
+import nf.iteris.com.br.iterisapp.util.Validator;
 import nf.iteris.com.br.iterisapp.dao.user_registration_dao.DbHelper;
 import nf.iteris.com.br.iterisapp.model.UserRegistration;
 

@@ -8,15 +8,13 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RelativeLayout;
 
-import nf.iteris.com.br.iterisapp.InputValidation;
-import nf.iteris.com.br.iterisapp.Mask;
+import nf.iteris.com.br.iterisapp.util.InputValidation;
+import nf.iteris.com.br.iterisapp.util.Mask;
 import nf.iteris.com.br.iterisapp.R;
 import nf.iteris.com.br.iterisapp.dao.user_registration_dao.DbHelper;
 import nf.iteris.com.br.iterisapp.ui.list_nf.ListNfActivity;
-import nf.iteris.com.br.iterisapp.ui.nf_registration.NfRegistrationActivity;
 
 public class LoginActivity extends AppCompatActivity {
     private final AppCompatActivity activity = LoginActivity.this;
