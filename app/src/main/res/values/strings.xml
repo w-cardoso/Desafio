@@ -7,6 +7,7 @@
     <string name="error_not_sign_up">Erro ao cadastrar</string>
     <string name="error_cpf_not_register">Cpf não cadastrado</string>
     <string name="err_msg_cpf">Cpf digitado não é valido</string>
-    <string name="home_screen_txt_slogan">Controle a antecipação de suas notas ficais com o novo aplicativo OrganizaNF. COm o aplicativo será possivel cadastrar, visualizar, pesquisar, solicitar, visualizar, aprovar ou reprovar antecipação de suas notas fiscais.</string>
+    <string name="home_screen_txt_slogan">Controle suas notas fiscais com o novo aplicativo OrganizaNF . Com o aplicativo será possivel cadastrar, visualizar, pesquisar, solicitar, aprovar ou reprovar antecipamento de suas notas fiscais.</string>
+    <string name="home_screen_txt_title">Organiza NF</string>
 
 </resources>

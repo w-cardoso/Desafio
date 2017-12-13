@@ -1,6 +1,7 @@
 package nf.iteris.com.br.iterisapp.ui.home_screen;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -13,8 +14,10 @@ import nf.iteris.com.br.iterisapp.ui.sign_up.SignUpActivity;
 
 public class HomeScreenActivity extends AppCompatActivity {
     private TextView txtSlogan;
+    private TextView txtTitle;
     private Button btnSignIn;
     private Button btnSignUp;
+    private Typeface faceSlogan, faceTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +26,12 @@ public class HomeScreenActivity extends AppCompatActivity {
 
         getSupportActionBar().hide();
         loadComponents();
+
+        faceSlogan = Typeface.createFromAsset(getAssets(), "fonts/angelina.ttf");
+        txtSlogan.setTypeface(faceSlogan);
+
+        faceTitle = Typeface.createFromAsset(getAssets(), "fonts/hanged_letters.ttf");
+        txtTitle.setTypeface(faceTitle);
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +50,7 @@ public class HomeScreenActivity extends AppCompatActivity {
 
     private void loadComponents() {
         txtSlogan = (TextView) findViewById(R.id.home_screen_txt_slogan);
+        txtTitle = (TextView) findViewById(R.id.home_screen_txt_title);
         btnSignIn = (Button) findViewById(R.id.home_screen_btn_signIn);
         btnSignUp = (Button) findViewById(R.id.home_screen_btn_signUp);
     }
