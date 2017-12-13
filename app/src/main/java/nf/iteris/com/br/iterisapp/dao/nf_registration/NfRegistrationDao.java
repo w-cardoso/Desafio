@@ -63,11 +63,9 @@ public class NfRegistrationDao extends SQLiteOpenHelper {
         db.insert(TABELA_NOME, null, cv);
         db.close();
     }
-
     public List<NfRegistration> getAllUser() {
         // array of columns to fetch
         String[] columns = {
-
                 COLUNA_NUMBER,
                 COLUNA_DESCRIPTION,
                 COLUNA_DATEBILLING,
@@ -78,9 +76,7 @@ public class NfRegistrationDao extends SQLiteOpenHelper {
         String sortOrder =
                 COLUNA_NUMBER + " ASC";
         List<NfRegistration> nfList = new ArrayList<NfRegistration>();
-
         SQLiteDatabase db = this.getReadableDatabase();
-
         // query the user table
         /**
          * Here query function is used to fetch records from user table this function works like we use sql query.
@@ -94,7 +90,6 @@ public class NfRegistrationDao extends SQLiteOpenHelper {
                 null,       //group the rows
                 null,       //filter by row groups
                 sortOrder); //The sort order
-
 
         // Traversing through all rows and adding to list
         if (cursor.moveToFirst()) {
@@ -118,4 +113,22 @@ public class NfRegistrationDao extends SQLiteOpenHelper {
         // return user list
         return nfList;
     }
+
+    /*public NfRegistration pegarDados(long id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(TABELA_NOME, new String[] { COLUNA_NUMBER,
+                        COLUNA_DESCRIPTION,
+                        COLUNA_DATEBILLING,
+                        COLUNA_DATEPAYMENT,
+                        COLUNA_STATUS }, COLUNA_NUMBER + "=?",
+                new String[] { String.valueOf(id) }, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        NfRegistration contact = new  NfRegistration(cursor.getString(cursor.getColumnIndex(COLUNA_NUMBER))),
+                cursor.getString(1), cursor.getString(2));
+        // return contact
+        return contact;
+        */
 }
