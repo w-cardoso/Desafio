@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_margin="16dp"
+        android:layout_margin="20dp"
         android:background="@android:drawable/editbox_background"
         android:gravity="center"
         android:orientation="vertical"
@@ -35,7 +35,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/list_nf_rcv_nfs"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="330dp"
         android:layout_below="@+id/process_layout_edt" />
 
     <Button

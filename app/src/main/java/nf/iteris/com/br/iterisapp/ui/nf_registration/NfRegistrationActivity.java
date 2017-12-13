@@ -1,6 +1,7 @@
 package nf.iteris.com.br.iterisapp.ui.nf_registration;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
@@ -22,6 +23,7 @@ import java.util.List;
 import nf.iteris.com.br.iterisapp.R;
 import nf.iteris.com.br.iterisapp.dao.nf_registration.NfRegistrationDao;
 import nf.iteris.com.br.iterisapp.model.NfRegistration;
+import nf.iteris.com.br.iterisapp.ui.list_nf.ListNfActivity;
 import nf.iteris.com.br.iterisapp.util.InputValidation;
 
 public class NfRegistrationActivity extends AppCompatActivity {
@@ -60,9 +62,9 @@ public class NfRegistrationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 postDataToSQLite();
+                startActivity(new Intent(NfRegistrationActivity.this, ListNfActivity.class));
             }
         });
-
 
 
         edtDateBilling.setOnClickListener(new View.OnClickListener() {
