@@ -50,7 +50,6 @@ public class NfRegistrationDao extends SQLiteOpenHelper {
 
     public void addNotaFiscal(NfRegistration nf) {
         SQLiteDatabase db = this.getWritableDatabase();
-
         ContentValues cv = new ContentValues();
         cv.put(COLUNA_NUMBER, nf.getNumber());
         cv.put(COLUNA_DESCRIPTION, nf.getDescription());

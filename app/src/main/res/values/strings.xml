@@ -4,6 +4,7 @@
     <string name="error_message_name">Digite seu nome</string>
     <string name="error_message_password">Digite uma senha</string>
     <string name="success_message">Usuário cadastrado com sucesso</string>
+    <string name="success_message_nf">Nofa fiscal cadastrada com sucesso</string>
     <string name="error_not_sign_up">Erro ao cadastrar</string>
     <string name="error_cpf_not_register">Cpf não cadastrado</string>
     <string name="err_msg_cpf">Cpf digitado não é valido</string>

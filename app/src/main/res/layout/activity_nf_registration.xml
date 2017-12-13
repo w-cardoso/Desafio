@@ -3,11 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/nf_registration_lot"
     android:background="@drawable/background_color"
     tools:context="nf.iteris.com.br.iterisapp.ui.nf_registration.NfRegistrationActivity">
 
 
     <LinearLayout
+        android:layout_centerVertical="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -40,7 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Digite a descrição da NF"
-                android:inputType="number"
+                android:inputType="textMultiLine"
                 android:singleLine="true" />
         </android.support.design.widget.TextInputLayout>
 
@@ -86,6 +88,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp" />
+
+        <Button
+            android:id="@+id/nf_registration_btn_cadastrar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="26sp"
+            android:background="@drawable/background_button_two"
+            android:text="Cadastrar NF"
+            android:textColor="@color/colorWhite" />
 
     </LinearLayout>
 

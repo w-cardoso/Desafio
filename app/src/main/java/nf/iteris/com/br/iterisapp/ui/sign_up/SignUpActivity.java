@@ -25,8 +25,7 @@ import nf.iteris.com.br.iterisapp.model.UserRegistration;
 
 
 public class SignUpActivity extends AppCompatActivity {
-    SQLiteOpenHelper openHelper;
-    SQLiteDatabase db;
+
     private TextInputEditText edtCpf;
     private TextInputEditText edtName;
     private TextInputEditText edtPassword;
@@ -52,7 +51,6 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
         getSupportActionBar().hide();
-        openHelper = new DbHelper(this);
         loadComponents();
         initObjects();
 
