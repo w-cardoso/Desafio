@@ -44,11 +44,10 @@ public class LoginActivity extends AppCompatActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 DbHelper dao = new DbHelper(getApplicationContext());
                 String cpf = edtCpf.getText().toString().trim();
                 verifyFromSQLite();
+                finish();
 
 
             }

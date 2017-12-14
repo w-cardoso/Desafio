@@ -59,6 +59,7 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (validateCpf()) {
                     postDataToSQLite();
+                    finish();
                 } else {
                     final AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
                     builder.setTitle("Informação");

@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -45,6 +46,9 @@ public class AntecipationRequestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_advanced_request);
+        getSupportActionBar().setTitle("Antecipação de Notas");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         initObjects();
 
         rcv.addOnItemTouchListener(new RecyclerItemClickListener(context, rcv, new RecyclerItemClickListener.OnItemClickListener() {
@@ -65,6 +69,7 @@ public class AntecipationRequestActivity extends AppCompatActivity {
 
 
                         dialog.dismiss();
+
                     }
                 });
 
@@ -85,10 +90,12 @@ public class AntecipationRequestActivity extends AppCompatActivity {
                         dataAntecipationDao.deleteNf(n);
                         startActivity(new Intent(activity, AntecipationRequestActivity.class));
                         Toast.makeText(activity, "Antecipação confirmada", Toast.LENGTH_LONG).show();
+
                     }
                 });
 
                 dialog.show();
+
             }
 
             @Override
@@ -136,5 +143,15 @@ public class AntecipationRequestActivity extends AppCompatActivity {
                 antecipationRecyclerAdapter.notifyDataSetChanged();
             }
         }.execute();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // handle arrow click here
+        if (item.getItemId() == android.R.id.home) {
+            finish(); // close this activity and return to preview activity (if there is any)
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

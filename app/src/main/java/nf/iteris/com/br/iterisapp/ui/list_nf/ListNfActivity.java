@@ -14,6 +14,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -63,6 +64,8 @@ public class ListNfActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_nf);
         getSupportActionBar().setTitle("Lista de Notas Fiscais");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         loadComponents();
         initObjects();
@@ -155,7 +158,6 @@ public class ListNfActivity extends AppCompatActivity {
                 });
 
 
-
                 btnAntecipe.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -173,9 +175,11 @@ public class ListNfActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         dialog.dismiss();
+
                     }
                 });
                 dialog.show();
+
             }
 
             @Override
@@ -246,6 +250,16 @@ public class ListNfActivity extends AppCompatActivity {
             Toast.makeText(activity, "A data não pode ser a mesma", Toast.LENGTH_LONG).show();
         }
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // handle arrow click here
+        if (item.getItemId() == android.R.id.home) {
+            finish(); // close this activity and return to preview activity (if there is any)
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 
