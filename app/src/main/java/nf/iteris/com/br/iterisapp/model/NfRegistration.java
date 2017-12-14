@@ -5,6 +5,16 @@ package nf.iteris.com.br.iterisapp.model;
  */
 
 public class NfRegistration {
+    public NfRegistration() {}
+
+    public NfRegistration(String number, String description, String dateBilling, String datePayment, String status) {
+        this.number = number;
+        this.description = description;
+        this.dateBilling = dateBilling;
+        this.datePayment = datePayment;
+        this.status = status;
+    }
+
     private String number;
     private String description;
     private String dateBilling;

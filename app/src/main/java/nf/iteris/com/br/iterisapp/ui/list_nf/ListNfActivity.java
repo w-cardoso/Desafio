@@ -1,6 +1,7 @@
 package nf.iteris.com.br.iterisapp.ui.list_nf;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -17,12 +18,14 @@ import android.text.TextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import nf.iteris.com.br.iterisapp.R;
@@ -40,6 +43,7 @@ public class ListNfActivity extends AppCompatActivity {
     private EditText edtSearch;
     private Button btnRegisterNfs;
     private Context context;
+    DatePickerDialog datePickerDialog;
 
 
     @Override
@@ -50,8 +54,6 @@ public class ListNfActivity extends AppCompatActivity {
 
         loadComponents();
         initObjects();
-
-
 
 
         btnRegisterNfs.setOnClickListener(new View.OnClickListener() {
@@ -84,8 +86,8 @@ public class ListNfActivity extends AppCompatActivity {
                 NfRegistrationDao dao = new NfRegistrationDao(getApplicationContext());
 
                 TextView txtId = (TextView) view.findViewById(R.id.item_nf_registration_txt_number_nf);
-                long id = Long.parseLong(txtId.getText().toString());
-                dao.pegarDados(id);
+                String id = txtId.getText().toString();
+                NfRegistration dados = dao.pegarDados(id);
 
 
                 final Dialog dialog = new Dialog(ListNfActivity.this);
@@ -96,7 +98,7 @@ public class ListNfActivity extends AppCompatActivity {
                 TextInputEditText edtNumberNf = (TextInputEditText) dialog.findViewById(R.id.dialog_rcv_edt_numbernf);
                 TextInputEditText edtDescription = (TextInputEditText) dialog.findViewById(R.id.dialog_rcv_edt_description);
                 TextInputEditText edtDateBilling = (TextInputEditText) dialog.findViewById(R.id.dialog_rcv_edt_date_billing);
-                TextInputEditText edtDatePayment = (TextInputEditText) dialog.findViewById(R.id.dialog_rcv_edt_date_payment);
+                final TextInputEditText edtDatePayment = (TextInputEditText) dialog.findViewById(R.id.dialog_rcv_edt_date_payment);
                 TextInputLayout tilNumberNf = (TextInputLayout) dialog.findViewById(R.id.dialog_rcv_til_numbernf);
                 TextInputLayout tilDescription = (TextInputLayout) dialog.findViewById(R.id.dialog_rcv_til_description);
                 TextInputLayout tilDateBilling = (TextInputLayout) dialog.findViewById(R.id.dialog_rcv_til_date_billing);
@@ -104,6 +106,39 @@ public class ListNfActivity extends AppCompatActivity {
                 Button btnCancel = (Button) dialog.findViewById(R.id.dialog_rcv_btn_cancelar);
                 Button btnAntecipe = (Button) dialog.findViewById(R.id.dialog_rcv_btn_antecipar);
 
+                edtNumberNf.setText(dados.getNumber());
+                edtNumberNf.setFocusableInTouchMode(false);
+
+                edtDescription.setText(dados.getDescription());
+                edtDescription.setFocusableInTouchMode(false);
+
+                edtDateBilling.setText(dados.getDateBilling());
+                edtDateBilling.setFocusableInTouchMode(false);
+
+                edtDatePayment.setText(dados.getDatePayment());
+                edtDatePayment.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        final Calendar c = Calendar.getInstance();
+                        int mYear = c.get(Calendar.YEAR); // current year
+                        int mMonth = c.get(Calendar.MONTH); // current month
+                        int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
+
+                        datePickerDialog = new DatePickerDialog(ListNfActivity.this,
+                                new DatePickerDialog.OnDateSetListener() {
+
+                                    @Override
+                                    public void onDateSet(DatePicker view, int year,
+                                                          int monthOfYear, int dayOfMonth) {
+                                        // set day of month , month and year value in the edit text
+                                        edtDatePayment.setText(dayOfMonth + "/"
+                                                + (monthOfYear + 1) + "/" + year);
+
+                                    }
+                                }, mYear, mMonth, mDay);
+                        datePickerDialog.show();
+                    }
+                });
 
 
                 dialog.show();

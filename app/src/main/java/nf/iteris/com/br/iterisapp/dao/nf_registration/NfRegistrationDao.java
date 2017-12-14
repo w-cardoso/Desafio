@@ -114,7 +114,7 @@ public class NfRegistrationDao extends SQLiteOpenHelper {
         return nfList;
     }
 
-    /*public NfRegistration pegarDados(long id) {
+    public NfRegistration pegarDados(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(TABELA_NOME, new String[] { COLUNA_NUMBER,
@@ -122,13 +122,18 @@ public class NfRegistrationDao extends SQLiteOpenHelper {
                         COLUNA_DATEBILLING,
                         COLUNA_DATEPAYMENT,
                         COLUNA_STATUS }, COLUNA_NUMBER + "=?",
-                new String[] { String.valueOf(id) }, null, null, null, null);
-        if (cursor != null)
+                new String[] { id }, null, null, null, null);
+        if (cursor != null) {
             cursor.moveToFirst();
 
-        NfRegistration contact = new  NfRegistration(cursor.getString(cursor.getColumnIndex(COLUNA_NUMBER))),
-                cursor.getString(1), cursor.getString(2));
-        // return contact
-        return contact;
-        */
+            String number = cursor.getString(0);
+            String description = cursor.getString(1);
+            String dateBilling = cursor.getString(2);
+            String datePayment = cursor.getString(3);
+            String status = cursor.getString(4);
+
+            return new NfRegistration(number, description, dateBilling, datePayment, status);
+        }
+        return null;
+    }
 }
