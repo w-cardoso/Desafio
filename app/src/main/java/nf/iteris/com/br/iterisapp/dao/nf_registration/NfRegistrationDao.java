@@ -136,4 +136,12 @@ public class NfRegistrationDao extends SQLiteOpenHelper {
         }
         return null;
     }
+
+    public void deleteNf(String nf) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        // delete user record by id
+        db.delete(TABELA_NOME, COLUNA_NUMBER + " = ?",
+                new String[]{nf});
+        db.close();
+    }
 }

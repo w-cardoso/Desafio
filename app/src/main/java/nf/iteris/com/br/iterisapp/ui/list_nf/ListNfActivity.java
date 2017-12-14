@@ -95,11 +95,11 @@ public class ListNfActivity extends AppCompatActivity {
         recyclerViewNfs.addOnItemTouchListener(new RecyclerItemClickListener(context, recyclerViewNfs, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                NfRegistrationDao dao = new NfRegistrationDao(getApplicationContext());
+                final NfRegistrationDao dao = new NfRegistrationDao(getApplicationContext());
 
                 TextView txtId = (TextView) view.findViewById(R.id.item_nf_registration_txt_number_nf);
                 String id = txtId.getText().toString();
-                NfRegistration dados = dao.pegarDados(id);
+                final NfRegistration dados = dao.pegarDados(id);
 
 
                 final Dialog dialog = new Dialog(ListNfActivity.this);
@@ -120,6 +120,7 @@ public class ListNfActivity extends AppCompatActivity {
 
                 edtNumberNf.setText(dados.getNumber());
                 edtNumberNf.setFocusableInTouchMode(false);
+                final String numeroNF = edtNumberNf.getText().toString();
 
                 edtDescription.setText(dados.getDescription());
                 edtDescription.setFocusableInTouchMode(false);
@@ -160,6 +161,10 @@ public class ListNfActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         if (!edtDatePayment.equals(date)) {
                             postDataToSQLite();
+                            String n = dados.getNumber().toString();
+                            dao.deleteNf(n);
+                            startActivity(new Intent(ListNfActivity.this, ListNfActivity.class));
+
                         }
                     }
                 });
@@ -170,8 +175,6 @@ public class ListNfActivity extends AppCompatActivity {
                         dialog.dismiss();
                     }
                 });
-
-
                 dialog.show();
             }
 
