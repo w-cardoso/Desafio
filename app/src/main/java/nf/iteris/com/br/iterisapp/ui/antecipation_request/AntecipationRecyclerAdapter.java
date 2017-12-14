@@ -33,7 +33,9 @@ public class AntecipationRecyclerAdapter extends RecyclerView.Adapter<Antecipati
 
     @Override
     public void onBindViewHolder(AntecipationViewHolder holder, int position) {
-        holder.txtStatus.setText(listNotasAntecipation.get(position).getStatus());
+        holder.txtStatus.setText("Status" + listNotasAntecipation.get(position).getStatus());
+        holder.txtDatePayment.setText("Antecipar para: " + listNotasAntecipation.get(position).getDatePayment());
+        holder.txtNotaFiscal.setText("Número NF: " + listNotasAntecipation.get(position).getNumber());
     }
 
     @Override
@@ -52,7 +54,7 @@ public class AntecipationRecyclerAdapter extends RecyclerView.Adapter<Antecipati
             super(view);
             txtStatus = (TextView) view.findViewById(R.id.item_antecipation_txt_status);
             txtDatePayment = (TextView) view.findViewById(R.id.item_antecipation_txt_date_payment);
-            txtNotaFiscal = (TextView) view.findViewById(R.id.item_antecipation_txt_status);
+            txtNotaFiscal = (TextView) view.findViewById(R.id.item_antecipation_txt_nf);
         }
     }
 }

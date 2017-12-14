@@ -12,7 +12,7 @@ import android.widget.RelativeLayout;
 
 import nf.iteris.com.br.iterisapp.R;
 import nf.iteris.com.br.iterisapp.dao.user_registration_dao.DbHelper;
-import nf.iteris.com.br.iterisapp.model.UserRegistration;
+import nf.iteris.com.br.iterisapp.ui.antecipation_request.AntecipationRequestActivity;
 import nf.iteris.com.br.iterisapp.ui.list_nf.ListNfActivity;
 import nf.iteris.com.br.iterisapp.util.InputValidation;
 import nf.iteris.com.br.iterisapp.util.Mask;
@@ -28,6 +28,9 @@ public class LoginActivity extends AppCompatActivity {
 
     private InputValidation inputValidation;
     private DbHelper databaseHelper;
+    private String profileOne = "Analista";
+    private String profileTwo = "Gestor";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +48,8 @@ public class LoginActivity extends AppCompatActivity {
 
                 DbHelper dao = new DbHelper(getApplicationContext());
                 String cpf = edtCpf.getText().toString().trim();
-                UserRegistration profile = dao.getProfile(cpf);
-                String perfil = dao.getProfile(cpf).toString();
+                verifyFromSQLite();
+
 
             }
         });
@@ -78,15 +81,21 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         if (databaseHelper.checkUser(edtCpf.getText().toString().trim()
-                , edtPassword.getText().toString().trim())) {
+                , edtPassword.getText().toString().trim(), profileOne)) {
 
 
             Intent accountsIntent = new Intent(activity, ListNfActivity.class);
             startActivity(accountsIntent);
 
 
-        } else {
-            // Snack Bar to show success message that record is wrong
+        }
+        if (databaseHelper.checkUser(edtCpf.getText().toString().trim()
+                , edtPassword.getText().toString().trim(), profileTwo)) {
+            Intent accountsIntent = new Intent(activity, AntecipationRequestActivity.class);
+            startActivity(accountsIntent);
+
+        }
+        else{
             Snackbar.make(rLayout, getString(R.string.error_cpf_not_register), Snackbar.LENGTH_LONG).show();
         }
     }

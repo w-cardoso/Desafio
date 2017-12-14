@@ -97,7 +97,7 @@ public class DbHelper extends SQLiteOpenHelper {
         return false;
     }
 
-    public boolean checkUser(String cpf, String password) {
+    public boolean checkUser(String cpf, String password, String profile) {
 
         // array of columns to fetch
         String[] columns = {
@@ -105,10 +105,10 @@ public class DbHelper extends SQLiteOpenHelper {
         };
         SQLiteDatabase db = this.getReadableDatabase();
         // selection criteria
-        String selection = COLUNA_CPF + " = ?" + " AND " + COLUNA_PASSWORD + " = ?";
+        String selection = COLUNA_CPF + " = ?" + " AND " + COLUNA_PASSWORD + " = ?" + " AND " + COLUNA_PROFILE + " = ?";
 
         // selection arguments
-        String[] selectionArgs = {cpf, password};
+        String[] selectionArgs = {cpf, password, profile};
 
         // query user table with conditions
         /**
@@ -133,28 +133,5 @@ public class DbHelper extends SQLiteOpenHelper {
         }
 
         return false;
-    }
-
-    public UserRegistration getProfile(String cpf) {
-        SQLiteDatabase db = this.getReadableDatabase();
-
-        Cursor cursor = db.query(TABELA_NOME, new String[]{COLUNA_CPF,
-
-                        COLUNA_NAME,
-                        COLUNA_PASSWORD,
-                        COLUNA_PROFILE}, COLUNA_CPF + "=?",
-                new String[]{cpf}, null, null, null, null);
-        if (cursor != null) {
-            cursor.moveToFirst();
-
-            String numberCpf = cursor.getString(0);
-            String name = cursor.getString(1);
-            String password = cursor.getString(2);
-            String profile = cursor.getString(3);
-
-
-            return new UserRegistration(cpf, name, password, profile);
-        }
-        return null;
     }
 }
