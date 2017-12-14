@@ -23,7 +23,7 @@
             android:name=".ui.list_nf.ListNfActivity"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity android:name=".ui.nf_registration.NfRegistrationActivity" />
-        <activity android:name=".ui.advanced_request.AdvancedRequestActivity"></activity>
+        <activity android:name=".ui.antecipation_request.AntecipationRequestActivity"></activity>
     </application>
 
 </manifest>

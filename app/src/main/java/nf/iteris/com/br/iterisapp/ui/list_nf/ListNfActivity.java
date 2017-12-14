@@ -1,6 +1,5 @@
 package nf.iteris.com.br.iterisapp.ui.list_nf;
 
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -15,21 +14,21 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 import nf.iteris.com.br.iterisapp.R;
+import nf.iteris.com.br.iterisapp.dao.nf_anticipation.NfAntecipationDao;
 import nf.iteris.com.br.iterisapp.dao.nf_registration.NfRegistrationDao;
+import nf.iteris.com.br.iterisapp.model.NfAntecipation;
 import nf.iteris.com.br.iterisapp.model.NfRegistration;
 import nf.iteris.com.br.iterisapp.ui.nf_registration.NfRegistrationActivity;
 import nf.iteris.com.br.iterisapp.util.RecyclerItemClickListener;
@@ -44,6 +43,19 @@ public class ListNfActivity extends AppCompatActivity {
     private Button btnRegisterNfs;
     private Context context;
     DatePickerDialog datePickerDialog;
+    TextInputEditText edtNumberNf;
+    TextInputEditText edtDescription;
+    TextInputEditText edtDateBilling;
+    TextInputEditText edtDatePayment;
+    TextInputLayout tilNumberNf;
+    TextInputLayout tilDescription;
+    TextInputLayout tilDateBilling;
+    TextInputLayout tilDatePayment;
+    Button btnCancel;
+    Button btnAntecipe;
+    private NfAntecipationDao databaseAntecipa;
+    private NfAntecipation antecipaNf;
+    String date;
 
 
     @Override
@@ -95,16 +107,16 @@ public class ListNfActivity extends AppCompatActivity {
                 dialog.setContentView(R.layout.dialog_rcv_item);
 
 
-                TextInputEditText edtNumberNf = (TextInputEditText) dialog.findViewById(R.id.dialog_rcv_edt_numbernf);
-                TextInputEditText edtDescription = (TextInputEditText) dialog.findViewById(R.id.dialog_rcv_edt_description);
-                TextInputEditText edtDateBilling = (TextInputEditText) dialog.findViewById(R.id.dialog_rcv_edt_date_billing);
-                final TextInputEditText edtDatePayment = (TextInputEditText) dialog.findViewById(R.id.dialog_rcv_edt_date_payment);
-                TextInputLayout tilNumberNf = (TextInputLayout) dialog.findViewById(R.id.dialog_rcv_til_numbernf);
-                TextInputLayout tilDescription = (TextInputLayout) dialog.findViewById(R.id.dialog_rcv_til_description);
-                TextInputLayout tilDateBilling = (TextInputLayout) dialog.findViewById(R.id.dialog_rcv_til_date_billing);
-                TextInputLayout tilDatePayment = (TextInputLayout) dialog.findViewById(R.id.dialog_rcv_til_date_payment);
-                Button btnCancel = (Button) dialog.findViewById(R.id.dialog_rcv_btn_cancelar);
-                Button btnAntecipe = (Button) dialog.findViewById(R.id.dialog_rcv_btn_antecipar);
+                edtNumberNf = (TextInputEditText) dialog.findViewById(R.id.dialog_rcv_edt_numbernf);
+                edtDescription = (TextInputEditText) dialog.findViewById(R.id.dialog_rcv_edt_description);
+                edtDateBilling = (TextInputEditText) dialog.findViewById(R.id.dialog_rcv_edt_date_billing);
+                edtDatePayment = (TextInputEditText) dialog.findViewById(R.id.dialog_rcv_edt_date_payment);
+                tilNumberNf = (TextInputLayout) dialog.findViewById(R.id.dialog_rcv_til_numbernf);
+                tilDescription = (TextInputLayout) dialog.findViewById(R.id.dialog_rcv_til_description);
+                tilDateBilling = (TextInputLayout) dialog.findViewById(R.id.dialog_rcv_til_date_billing);
+                tilDatePayment = (TextInputLayout) dialog.findViewById(R.id.dialog_rcv_til_date_payment);
+                btnCancel = (Button) dialog.findViewById(R.id.dialog_rcv_btn_cancelar);
+                btnAntecipe = (Button) dialog.findViewById(R.id.dialog_rcv_btn_antecipar);
 
                 edtNumberNf.setText(dados.getNumber());
                 edtNumberNf.setFocusableInTouchMode(false);
@@ -116,6 +128,7 @@ public class ListNfActivity extends AppCompatActivity {
                 edtDateBilling.setFocusableInTouchMode(false);
 
                 edtDatePayment.setText(dados.getDatePayment());
+                date = edtDatePayment.toString();
                 edtDatePayment.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -137,6 +150,24 @@ public class ListNfActivity extends AppCompatActivity {
                                     }
                                 }, mYear, mMonth, mDay);
                         datePickerDialog.show();
+                    }
+                });
+
+
+
+                btnAntecipe.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (!edtDatePayment.equals(date)) {
+                            postDataToSQLite();
+                        }
+                    }
+                });
+
+                btnCancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
                     }
                 });
 
@@ -167,6 +198,8 @@ public class ListNfActivity extends AppCompatActivity {
         recyclerViewNfs.setHasFixedSize(true);
         recyclerViewNfs.setAdapter(nfRecyclerAdapter);
         databaseHelper = new NfRegistrationDao(activity);
+        databaseAntecipa = new NfAntecipationDao(activity);
+        antecipaNf = new NfAntecipation();
 
 
         getDataFromSQLite();
@@ -190,4 +223,28 @@ public class ListNfActivity extends AppCompatActivity {
             }
         }.execute();
     }
+
+    private void postDataToSQLite() {
+        if (!edtDatePayment.getText().toString().trim().equals(date)) {
+
+
+            antecipaNf.setNumber(edtNumberNf.getText().toString().trim());
+            antecipaNf.setDescription(edtDescription.getText().toString().trim());
+            antecipaNf.setDateBilling(edtDateBilling.getText().toString().trim());
+            antecipaNf.setDatePayment(edtDatePayment.getText().toString().trim());
+            antecipaNf.setStatus("Solicitado Antecipação");
+
+
+            databaseAntecipa.addNotaFiscalAntecipation(antecipaNf);
+
+            // Snack Bar to show success message that record saved successfully
+            Toast.makeText(activity, "Solicitação enviada com sucesso", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(activity, "A data não pode ser a mesma", Toast.LENGTH_LONG).show();
+        }
+
+    }
+
+
 }
+

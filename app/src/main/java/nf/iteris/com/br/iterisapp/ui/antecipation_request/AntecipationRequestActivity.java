@@ -1,11 +1,11 @@
-package nf.iteris.com.br.iterisapp.ui.advanced_request;
+package nf.iteris.com.br.iterisapp.ui.antecipation_request;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import nf.iteris.com.br.iterisapp.R;
 
-public class AdvancedRequestActivity extends AppCompatActivity {
+public class AntecipationRequestActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

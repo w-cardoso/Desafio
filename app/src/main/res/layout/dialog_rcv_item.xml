@@ -86,7 +86,7 @@
         android:weightSum="2">
 
         <Button
-            android:id="@+id/dialog_rcv_btn_antecipar"
+            android:id="@+id/dialog_rcv_btn_cancelar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -96,7 +96,7 @@
             android:textColor="@color/colorWhite" />
 
         <Button
-            android:id="@+id/dialog_rcv_btn_cancelar"
+            android:id="@+id/dialog_rcv_btn_antecipar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
