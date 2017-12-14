@@ -59,6 +59,7 @@ public class AntecipationRequestActivity extends AppCompatActivity {
                 btnAprovar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
                         Toast.makeText(activity, "Antecipação confirmada", Toast.LENGTH_LONG).show();
                     }
                 });
