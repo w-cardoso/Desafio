@@ -1,7 +1,9 @@
 package nf.iteris.com.br.iterisapp.ui.antecipation_request;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -56,21 +58,42 @@ public class AntecipationRequestActivity extends AppCompatActivity {
             public void onItemClick(View view, int position) {
                 nf = antecipationRecyclerAdapter.notaFiscal(position);
 
-                final Dialog dialog = new Dialog(AntecipationRequestActivity.this);
+                final Dialog dialogg = new Dialog(AntecipationRequestActivity.this);
 
-                dialog.setContentView(R.layout.dialog_aprov_reprov);
-                txtTitle = (TextView) dialog.findViewById(R.id.dialog_aprov_reprov_txt_title);
-                btnReprovar = (Button) dialog.findViewById(R.id.dialog_aprov_reprov_btn_reprovar);
-                btnAprovar = (Button) dialog.findViewById(R.id.dialog_aprov_reprov_btn_aprovar);
+                dialogg.setContentView(R.layout.dialog_aprov_reprov);
+                txtTitle = (TextView) dialogg.findViewById(R.id.dialog_aprov_reprov_txt_title);
+                btnReprovar = (Button) dialogg.findViewById(R.id.dialog_aprov_reprov_btn_reprovar);
+                btnAprovar = (Button) dialogg.findViewById(R.id.dialog_aprov_reprov_btn_aprovar);
 
                 btnReprovar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 
+                        final AlertDialog.Builder builder = new AlertDialog.Builder(AntecipationRequestActivity.this);
+                        builder.setTitle("Gostaria de infomar uma nova data?");
 
-                        dialog.dismiss();
+                        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
 
+
+                            }
+                        });
+                        builder.setNeutralButton("Não", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
+                            }
+                        });
+
+
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+
+                        dialogg.dismiss();
                     }
+
+
                 });
 
                 btnAprovar.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +117,7 @@ public class AntecipationRequestActivity extends AppCompatActivity {
                     }
                 });
 
-                dialog.show();
+                dialogg.show();
 
             }
 
