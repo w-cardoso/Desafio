@@ -26,7 +26,7 @@
             android:background="@null"
             android:drawableStart="@drawable/search_big"
             android:gravity="center"
-            android:hint="Buscar"
+            android:hint="@string/list_nf_edt_search"
             android:inputType="text"
             android:lines="1"
             android:maxLines="1" />
@@ -45,7 +45,7 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="26sp"
         android:background="@drawable/background_button_two"
-        android:text="Cadastrar NF"
+        android:text="@string/list_nf_btn_sign_up"
         android:textColor="@color/colorWhite" />
 
 

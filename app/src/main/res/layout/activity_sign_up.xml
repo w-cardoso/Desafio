@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sign_up_lot_rlt"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/sign_up_lot_rlt"
     android:background="@drawable/background_color"
     tools:context="nf.iteris.com.br.iterisapp.ui.sign_up.SignUpActivity">
 
     <LinearLayout
-        android:layout_marginTop="56dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerInParent="true"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
+        android:layout_marginTop="56dp"
+        android:gravity="center"
         android:orientation="vertical">
 
         <android.support.design.widget.TextInputLayout
@@ -28,7 +27,7 @@
                 android:id="@+id/sign_up_edt_cpf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Digite seu CPF"
+                android:hint="@string/sign_up_edt_cpf"
                 android:inputType="number"
                 android:singleLine="true" />
         </android.support.design.widget.TextInputLayout>
@@ -44,7 +43,7 @@
                 android:id="@+id/sign_up_edt_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Digite seu nome"
+                android:hint="@string/sign_up_edt_name"
                 android:inputType="textPersonName"
                 android:singleLine="true" />
         </android.support.design.widget.TextInputLayout>
@@ -60,43 +59,41 @@
                 android:id="@+id/sign_up_edt_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Digite sua senha"
+                android:hint="@string/sign_up_edt_password"
                 android:inputType="textPassword"
                 android:singleLine="true" />
         </android.support.design.widget.TextInputLayout>
 
         <LinearLayout
-            android:layout_marginTop="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:orientation="horizontal">
 
             <RadioGroup
                 android:id="@+id/sign_up_rdg_select_profile"
-                android:layout_margin="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="16dp"
                 android:orientation="horizontal"
                 android:weightSum="2">
 
                 <RadioButton
-                    android:checked="true"
                     android:id="@+id/sign_up_rdb_profile_analista"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:checked="true"
                     android:text="Analista"
-                    android:textColor="@color/colorWhite"
                     android:textSize="20sp" />
 
                 <RadioButton
-                    android:selectAllOnFocus="true"
                     android:id="@+id/sign_up_rdb_profile_gestor"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:selectAllOnFocus="true"
                     android:text="Gestor"
-                    android:textColor="@color/colorWhite"
                     android:textSize="20sp" />
 
 

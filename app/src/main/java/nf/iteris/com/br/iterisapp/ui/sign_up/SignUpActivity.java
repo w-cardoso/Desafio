@@ -74,33 +74,6 @@ public class SignUpActivity extends AppCompatActivity {
                     AlertDialog dialog = builder.create();
                     dialog.show();
                 }
-
-
-
-
-                /*db = openHelper.getWritableDatabase();
-                String cpf = edtCpf.getText().toString();
-                String name = edtName.getText().toString();
-                String password = edtPassword.getText().toString();
-                int id = rdgSelectProfile.getCheckedRadioButtonId();
-                selectedButton = (RadioButton) findViewById(id);
-                String profile = selectedButton.getText().toString();
-
-                UserRegistrationDao dao = new UserRegistrationDao(getBaseContext());
-                boolean sucesso = dao.salvar(cpf, name, password, profile);
-
-                if (sucesso) {
-                    edtCpf.setText("");
-                    edtName.setText("");
-                    edtPassword.setText("");
-                    selectedButton.setSelected(false);
-
-                    Snackbar.make(view, "Divida salva com  Sucesso!", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                } else {
-                    Snackbar.make(view, "Erro ao salvar, consulte os logs!", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                }*/
             }
         });
 

@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:gravity="center"
-            android:text="Antecipações" />
+            android:text="@string/item_antecipation_txt_title" />
 
         <TextView
             android:id="@+id/item_antecipation_txt_status"
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:text="Status" />
+            android:text="@string/item_antecipation_txt_status" />
 
         <LinearLayout
             android:weightSum="2"
@@ -46,7 +46,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:text="Data Pagamento" />
+                android:text="@string/item_antecipation_txt_date_payment" />
 
             <TextView
                 android:id="@+id/item_antecipation_txt_nf"
@@ -56,7 +56,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:text="Nota Fiscal" />
+                android:text="@string/item_antecipation_txt_nf" />
 
         </LinearLayout>
 

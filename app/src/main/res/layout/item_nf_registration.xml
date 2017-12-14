@@ -32,7 +32,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_weight="7"
                     android:gravity="left"
-                    android:text="NF"
+                    android:text="@string/item_nf_registration_txt_number_nf"
                     android:textColor="@color/colorWhite"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:gravity="center"
-                android:text="Description"
+                android:text="@string/item_nf_registration_txt_description"
                 android:textColor="@color/colorWhite" />
 
 
@@ -64,7 +64,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="left"
-                    android:text="Data de Pagamento"
+                    android:text="@string/item_nf_registration_txt_date_payment"
                     android:textColor="@color/colorWhite"
                     android:textSize="14sp" />
 
@@ -74,7 +74,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="right"
-                    android:text="Status"
+                    android:text="@string/item_nf_registration_txt_status"
                     android:textColor="@color/colorWhite"
                     android:textSize="14sp" />
 

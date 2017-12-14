@@ -22,11 +22,12 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/splash_txt_information"
         android:textSize="18sp"
         android:textColor="@color/colorWhite"
         android:textStyle="italic"
         android:gravity="center"
-        android:text="Antecipação de notas fiscais"
+        android:text="@string/splash_txt_information"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
