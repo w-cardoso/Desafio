@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nf.iteris.com.br.iterisapp.model.NfAntecipation;
+import nf.iteris.com.br.iterisapp.model.NfRegistration;
 
 /**
  * Created by re034850 on 14/12/2017.
@@ -113,5 +114,36 @@ public class NfAntecipationDao extends SQLiteOpenHelper {
 
         // return user list
         return nfList;
+    }
+
+    public NfAntecipation pegarDados(String nf) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(TABELA_NOME, new String[] { COLUNA_NUMBER,
+                        COLUNA_DESCRIPTION,
+                        COLUNA_DATEBILLING,
+                        COLUNA_DATEPAYMENT,
+                        COLUNA_STATUS }, COLUNA_NUMBER + "=?",
+                new String[] { nf }, null, null, null, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+
+            String number = cursor.getString(0);
+            String description = cursor.getString(1);
+            String dateBilling = cursor.getString(2);
+            String datePayment = cursor.getString(3);
+            String status = "Antecipado";
+
+            return new NfAntecipation(number, description, dateBilling, datePayment, status);
+        }
+        return null;
+    }
+
+    public void deleteNf(String nf) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        // delete user record by id
+        db.delete(TABELA_NOME, COLUNA_NUMBER + " = ?",
+                new String[]{nf});
+        db.close();
     }
 }

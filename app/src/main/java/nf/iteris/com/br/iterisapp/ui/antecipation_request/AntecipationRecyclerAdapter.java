@@ -36,6 +36,7 @@ public class AntecipationRecyclerAdapter extends RecyclerView.Adapter<Antecipati
         holder.txtStatus.setText("Status" + listNotasAntecipation.get(position).getStatus());
         holder.txtDatePayment.setText("Antecipar para: " + listNotasAntecipation.get(position).getDatePayment());
         holder.txtNotaFiscal.setText("Número NF: " + listNotasAntecipation.get(position).getNumber());
+
     }
 
     @Override
@@ -56,5 +57,9 @@ public class AntecipationRecyclerAdapter extends RecyclerView.Adapter<Antecipati
             txtDatePayment = (TextView) view.findViewById(R.id.item_antecipation_txt_date_payment);
             txtNotaFiscal = (TextView) view.findViewById(R.id.item_antecipation_txt_nf);
         }
+    }
+
+    public String notaFiscal(int position){
+        return listNotasAntecipation.get(position).getNumber();
     }
 }
