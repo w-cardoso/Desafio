@@ -10,6 +10,16 @@ public class UserRegistration {
     private String password;
     private String profile;
 
+    public UserRegistration() {
+    }
+
+    public UserRegistration(String cpf, String name, String password, String profile) {
+        this.cpf = cpf;
+        this.name = name;
+        this.password = password;
+        this.profile = profile;
+    }
+
     public String getCpf() {
         return cpf;
     }

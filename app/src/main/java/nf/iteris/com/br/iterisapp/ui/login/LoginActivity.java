@@ -10,11 +10,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
-import nf.iteris.com.br.iterisapp.util.InputValidation;
-import nf.iteris.com.br.iterisapp.util.Mask;
 import nf.iteris.com.br.iterisapp.R;
 import nf.iteris.com.br.iterisapp.dao.user_registration_dao.DbHelper;
+import nf.iteris.com.br.iterisapp.model.UserRegistration;
 import nf.iteris.com.br.iterisapp.ui.list_nf.ListNfActivity;
+import nf.iteris.com.br.iterisapp.util.InputValidation;
+import nf.iteris.com.br.iterisapp.util.Mask;
 
 public class LoginActivity extends AppCompatActivity {
     private final AppCompatActivity activity = LoginActivity.this;
@@ -40,10 +41,17 @@ public class LoginActivity extends AppCompatActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                verifyFromSQLite();
+
+
+                DbHelper dao = new DbHelper(getApplicationContext());
+                String cpf = edtCpf.getText().toString().trim();
+                UserRegistration profile = dao.getProfile(cpf);
+                String perfil = dao.getProfile(cpf).toString();
+
             }
         });
     }
+
 
     private void loadComponents() {
         rLayout = (RelativeLayout) findViewById(R.id.login_lot_rLayout);
@@ -87,4 +95,6 @@ public class LoginActivity extends AppCompatActivity {
         edtCpf.setText(null);
         edtPassword.setText(null);
     }
+
+
 }

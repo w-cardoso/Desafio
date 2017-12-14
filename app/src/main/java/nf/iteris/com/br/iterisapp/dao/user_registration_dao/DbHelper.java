@@ -134,4 +134,27 @@ public class DbHelper extends SQLiteOpenHelper {
 
         return false;
     }
+
+    public UserRegistration getProfile(String cpf) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(TABELA_NOME, new String[]{COLUNA_CPF,
+
+                        COLUNA_NAME,
+                        COLUNA_PASSWORD,
+                        COLUNA_PROFILE}, COLUNA_CPF + "=?",
+                new String[]{cpf}, null, null, null, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+
+            String numberCpf = cursor.getString(0);
+            String name = cursor.getString(1);
+            String password = cursor.getString(2);
+            String profile = cursor.getString(3);
+
+
+            return new UserRegistration(cpf, name, password, profile);
+        }
+        return null;
+    }
 }
