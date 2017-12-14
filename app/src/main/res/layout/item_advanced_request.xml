@@ -6,7 +6,7 @@
 
     <LinearLayout
         android:layout_margin="16dp"
-        android:background="@color/btnSignActive"
+        android:background="#1CB5E0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
