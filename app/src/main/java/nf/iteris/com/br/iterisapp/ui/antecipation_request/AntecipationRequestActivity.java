@@ -1,12 +1,16 @@
 package nf.iteris.com.br.iterisapp.ui.antecipation_request;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,10 +18,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import nf.iteris.com.br.iterisapp.R;
@@ -25,6 +31,8 @@ import nf.iteris.com.br.iterisapp.dao.nf_anticipation.NfAntecipationDao;
 import nf.iteris.com.br.iterisapp.dao.nf_registration.NfRegistrationDao;
 import nf.iteris.com.br.iterisapp.model.NfAntecipation;
 import nf.iteris.com.br.iterisapp.model.NfRegistration;
+import nf.iteris.com.br.iterisapp.ui.home_screen.HomeScreenActivity;
+import nf.iteris.com.br.iterisapp.ui.list_nf.ListNfActivity;
 import nf.iteris.com.br.iterisapp.util.RecyclerItemClickListener;
 
 public class AntecipationRequestActivity extends AppCompatActivity {
@@ -42,6 +50,18 @@ public class AntecipationRequestActivity extends AppCompatActivity {
     private NfRegistration notaFiscal;
     private NfAntecipation nfAntecipation;
     String nf;
+    TextInputEditText edtNumberNf;
+    TextInputEditText edtDescription;
+    TextInputEditText edtDateBilling;
+    TextInputEditText edtDatePayment;
+    TextInputLayout tilNumberNf;
+    TextInputLayout tilDescription;
+    TextInputLayout tilDateBilling;
+    TextInputLayout tilDatePayment;
+    Button btnCancel;
+    Button btnAntecipe;
+    DatePickerDialog datePickerDialog;
+    String date;
 
 
     @Override
@@ -75,7 +95,87 @@ public class AntecipationRequestActivity extends AppCompatActivity {
                         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
+                                nfAntecipation = dataAntecipationDao.pegarDados(nf);
+                                final Dialog dialogDados = new Dialog(AntecipationRequestActivity.this);
+                                dialogDados.setTitle("Descrição");
+                                dialogDados.setContentView(R.layout.dialog_rcv_item);
 
+                                edtNumberNf = (TextInputEditText) dialogDados.findViewById(R.id.dialog_rcv_edt_numbernf);
+                                edtDescription = (TextInputEditText) dialogDados.findViewById(R.id.dialog_rcv_edt_description);
+                                edtDateBilling = (TextInputEditText) dialogDados.findViewById(R.id.dialog_rcv_edt_date_billing);
+                                edtDatePayment = (TextInputEditText) dialogDados.findViewById(R.id.dialog_rcv_edt_date_payment);
+                                tilNumberNf = (TextInputLayout) dialogDados.findViewById(R.id.dialog_rcv_til_numbernf);
+                                tilDescription = (TextInputLayout) dialogDados.findViewById(R.id.dialog_rcv_til_description);
+                                tilDateBilling = (TextInputLayout) dialogDados.findViewById(R.id.dialog_rcv_til_date_billing);
+                                tilDatePayment = (TextInputLayout) dialogDados.findViewById(R.id.dialog_rcv_til_date_payment);
+                                btnCancel = (Button) dialogDados.findViewById(R.id.dialog_rcv_btn_cancelar);
+                                btnAntecipe = (Button) dialogDados.findViewById(R.id.dialog_rcv_btn_antecipar);
+
+                                edtNumberNf.setText(nfAntecipation.getNumber());
+                                edtNumberNf.setFocusableInTouchMode(false);
+
+
+                                edtDescription.setText(nfAntecipation.getDescription());
+                                edtDescription.setFocusableInTouchMode(false);
+
+                                edtDateBilling.setText(nfAntecipation.getDateBilling());
+                                edtDateBilling.setFocusableInTouchMode(false);
+
+                                edtDatePayment.setText(nfAntecipation.getDatePayment());
+                                date = edtDatePayment.toString();
+                                edtDatePayment.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        final Calendar c = Calendar.getInstance();
+                                        int mYear = c.get(Calendar.YEAR); // current year
+                                        int mMonth = c.get(Calendar.MONTH); // current month
+                                        int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
+
+                                        datePickerDialog = new DatePickerDialog(AntecipationRequestActivity.this,
+                                                new DatePickerDialog.OnDateSetListener() {
+
+                                                    @Override
+                                                    public void onDateSet(DatePicker view, int year,
+                                                                          int monthOfYear, int dayOfMonth) {
+                                                        // set day of month , month and year value in the edit text
+                                                        edtDatePayment.setText(dayOfMonth + "/"
+                                                                + (monthOfYear + 1) + "/" + year);
+
+                                                    }
+                                                }, mYear, mMonth, mDay);
+                                        datePickerDialog.show();
+                                    }
+                                });
+
+
+                                btnAntecipe.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        nfAntecipation = dataAntecipationDao.pegarDados(nf);
+                                        notaFiscal.setNumber(nfAntecipation.getNumber().toString());
+                                        notaFiscal.setDescription(nfAntecipation.getDescription().toString());
+                                        notaFiscal.setDateBilling(nfAntecipation.getDateBilling().toString());
+                                        notaFiscal.setDatePayment(nfAntecipation.getDatePayment().toString());
+                                        notaFiscal.setStatus(nfAntecipation.getStatus().toString());
+                                        databaseHelper.addNotaFiscal(notaFiscal);
+
+                                        String n = nfAntecipation.getNumber().toString();
+                                        dataAntecipationDao.deleteNf(n);
+                                        startActivity(new Intent(activity, AntecipationRequestActivity.class));
+                                        Toast.makeText(activity, "Antecipação confirmada", Toast.LENGTH_LONG).show();
+                                    }
+                                });
+
+                                btnCancel.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        dialogDados.dismiss();
+
+                                    }
+                                });
+
+
+                                dialogDados.show();
 
                             }
                         });
@@ -172,9 +272,39 @@ public class AntecipationRequestActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // handle arrow click here
         if (item.getItemId() == android.R.id.home) {
+            startActivity(new Intent(activity, HomeScreenActivity.class));
             finish(); // close this activity and return to preview activity (if there is any)
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void postDataToSQLite() {
+        if (!edtDatePayment.getText().toString().trim().equals(date)) {
+
+
+            notaFiscal.setNumber(edtNumberNf.getText().toString().trim());
+            notaFiscal.setDescription(edtDescription.getText().toString().trim());
+            notaFiscal.setDateBilling(edtDateBilling.getText().toString().trim());
+            notaFiscal.setDatePayment(edtDatePayment.getText().toString().trim());
+            notaFiscal.setStatus("Antecipado dado do Gestor");
+
+
+            databaseHelper.addNotaFiscal(notaFiscal);
+
+            // Snack Bar to show success message that record saved successfully
+            Toast.makeText(activity, "Solicitação enviada com sucesso", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(activity, "A data não pode ser a mesma", Toast.LENGTH_LONG).show();
+        }
+
+    }
+
+    private void emptyInputEditText() {
+        edtNumberNf.setText(null);
+        edtDescription.setText(null);
+        edtDateBilling.setText(null);
+        edtDatePayment.setText(null);
+
     }
 }

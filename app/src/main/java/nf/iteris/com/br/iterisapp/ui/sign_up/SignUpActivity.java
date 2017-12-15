@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import nf.iteris.com.br.iterisapp.util.InputValidation;
 import nf.iteris.com.br.iterisapp.util.Mask;
@@ -129,7 +130,7 @@ public class SignUpActivity extends AppCompatActivity {
             databaseHelper.addUser(user);
 
             // Snack Bar to show success message that record saved successfully
-            Snackbar.make(rLayout, getString(R.string.success_message), Snackbar.LENGTH_LONG).show();
+            Toast.makeText(activity, getString(R.string.success_message), Toast.LENGTH_LONG).show();
             emptyInputEditText();
 
 

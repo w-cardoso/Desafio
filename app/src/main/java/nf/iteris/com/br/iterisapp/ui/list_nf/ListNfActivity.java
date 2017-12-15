@@ -31,6 +31,7 @@ import nf.iteris.com.br.iterisapp.dao.nf_anticipation.NfAntecipationDao;
 import nf.iteris.com.br.iterisapp.dao.nf_registration.NfRegistrationDao;
 import nf.iteris.com.br.iterisapp.model.NfAntecipation;
 import nf.iteris.com.br.iterisapp.model.NfRegistration;
+import nf.iteris.com.br.iterisapp.ui.home_screen.HomeScreenActivity;
 import nf.iteris.com.br.iterisapp.ui.nf_registration.NfRegistrationActivity;
 import nf.iteris.com.br.iterisapp.util.RecyclerItemClickListener;
 
@@ -256,6 +257,7 @@ public class ListNfActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // handle arrow click here
         if (item.getItemId() == android.R.id.home) {
+            startActivity(new Intent(activity, HomeScreenActivity.class));
             finish(); // close this activity and return to preview activity (if there is any)
         }
 
