@@ -7,6 +7,7 @@ import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
@@ -48,6 +49,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 DbHelper dao = new DbHelper(getApplicationContext());
                 String cpf = edtCpf.getText().toString().trim();
+                validateCpf();
                 if (Validator.validateCPF(cpf)){
                     verifyFromSQLite();
                     finish();
@@ -109,6 +111,24 @@ public class LoginActivity extends AppCompatActivity {
     private void emptyInputEditText() {
         edtCpf.setText(null);
         edtPassword.setText(null);
+    }
+
+    private boolean validateCpf() {
+        boolean cpfValido = Validator.validateCPF(edtCpf.getText().toString().trim());
+        String cpf = edtCpf.getText().toString();
+        if (!cpfValido || cpf.isEmpty()) {
+            tilCpf.setError(getString(R.string.err_msg_cpf));
+            requestFocus(edtCpf);
+        } else {
+            tilCpf.setErrorEnabled(false);
+        }
+        return true;
+    }
+
+    private void requestFocus(View view) {
+        if (view.requestFocus()) {
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+        }
     }
 
 
