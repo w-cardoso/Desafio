@@ -57,7 +57,9 @@ public class SignUpActivity extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (validateCpf()) {
+                String cpf = edtCpf.getText().toString().trim();
+                validateCpf();
+                if (Validator.validateCPF(cpf)) {
                     postDataToSQLite();
                     finish();
                 } else {
@@ -161,10 +163,11 @@ public class SignUpActivity extends AppCompatActivity {
         return true;
     }
 
-
     private void requestFocus(View view) {
         if (view.requestFocus()) {
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
         }
     }
+
+
 }

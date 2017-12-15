@@ -16,6 +16,7 @@ import nf.iteris.com.br.iterisapp.ui.antecipation_request.AntecipationRequestAct
 import nf.iteris.com.br.iterisapp.ui.list_nf.ListNfActivity;
 import nf.iteris.com.br.iterisapp.util.InputValidation;
 import nf.iteris.com.br.iterisapp.util.Mask;
+import nf.iteris.com.br.iterisapp.util.Validator;
 
 public class LoginActivity extends AppCompatActivity {
     private final AppCompatActivity activity = LoginActivity.this;
@@ -44,10 +45,16 @@ public class LoginActivity extends AppCompatActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 DbHelper dao = new DbHelper(getApplicationContext());
                 String cpf = edtCpf.getText().toString().trim();
-                verifyFromSQLite();
-                finish();
+                if (Validator.validateCPF(cpf)){
+                    verifyFromSQLite();
+                    finish();
+                }else {
+                    Snackbar.make(rLayout, getString(R.string.error_cpf_not_register), Snackbar.LENGTH_LONG).show();
+                }
+
 
 
             }
