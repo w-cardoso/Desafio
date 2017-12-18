@@ -214,7 +214,7 @@ public class ListNfActivity extends AppCompatActivity {
     }
 
     private void getDataFromSQLite() {
-        // AsyncTask is used that SQLite operation not blocks the UI Thread.
+        // AsyncTask   é usado para que a operação SQLite não bloqueie a UI Thread.
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... params) {

@@ -61,24 +61,19 @@ public class DbHelper extends SQLiteOpenHelper {
 
     public boolean checkUser(String cpf) {
 
-        // array of columns to fetch
+
         String[] columns = {
                 COLUNA_ID
         };
         SQLiteDatabase db = this.getReadableDatabase();
 
-        // selection criteria
+
         String selection = COLUNA_CPF + " = ?";
 
-        // selection argument
+
         String[] selectionArgs = {cpf};
 
-        // query user table with condition
-        /**
-         * Here query function is used to fetch records from user table this function works like we use sql query.
-         * SQL query equivalent to this query function is
-         * SELECT user_id FROM user WHERE user_email = 'jack@androidtutorialshub.com';
-         */
+
         Cursor cursor = db.query(TABELA_NOME, //Table to query
                 columns,                    //columns to return
                 selection,                  //columns for the WHERE clause
@@ -99,23 +94,18 @@ public class DbHelper extends SQLiteOpenHelper {
 
     public boolean checkUser(String cpf, String password, String profile) {
 
-        // array of columns to fetch
+
         String[] columns = {
                 COLUNA_ID
         };
         SQLiteDatabase db = this.getReadableDatabase();
-        // selection criteria
+
         String selection = COLUNA_CPF + " = ?" + " AND " + COLUNA_PASSWORD + " = ?" + " AND " + COLUNA_PROFILE + " = ?";
 
-        // selection arguments
+
         String[] selectionArgs = {cpf, password, profile};
 
-        // query user table with conditions
-        /**
-         * Here query function is used to fetch records from user table this function works like we use sql query.
-         * SQL query equivalent to this query function is
-         * SELECT user_id FROM user WHERE user_email = 'jack@androidtutorialshub.com' AND user_password = 'qwerty';
-         */
+
         Cursor cursor = db.query(TABELA_NOME, //Table to query
                 columns,                    //columns to return
                 selection,                  //columns for the WHERE clause

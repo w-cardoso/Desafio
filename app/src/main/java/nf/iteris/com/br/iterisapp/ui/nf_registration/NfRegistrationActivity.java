@@ -195,13 +195,13 @@ public class NfRegistrationActivity extends AppCompatActivity {
 
             databaseHelper.addNotaFiscal(notaFiscal);
 
-            // Snack Bar to show success message that record saved successfully
+
             Snackbar.make(rLayout, getString(R.string.success_message_nf), Snackbar.LENGTH_LONG).show();
             emptyInputEditText();
 
 
         } else {
-            // Snack Bar to show error message that record already exists
+
             Snackbar.make(rLayout, getString(R.string.error_not_sign_up), Snackbar.LENGTH_LONG).show();
         }
 

@@ -155,7 +155,7 @@ public class AntecipationRequestActivity extends AppCompatActivity {
                                         notaFiscal.setNumber(nfAntecipation.getNumber().toString());
                                         notaFiscal.setDescription(nfAntecipation.getDescription().toString());
                                         notaFiscal.setDateBilling(nfAntecipation.getDateBilling().toString());
-                                        notaFiscal.setDatePayment(nfAntecipation.getDatePayment().toString());
+                                        notaFiscal.setDatePayment(edtDatePayment.getText().toString());
                                         notaFiscal.setStatus(nfAntecipation.getStatus().toString());
                                         databaseHelper.addNotaFiscal(notaFiscal);
 
@@ -230,6 +230,7 @@ public class AntecipationRequestActivity extends AppCompatActivity {
 
     }
 
+    //Inicialização ods xmls
     private void initObjects() {
         rcv = (RecyclerView) findViewById(R.id.advanced_request_recycler);
         listNotasAntecipation = new ArrayList<>();
@@ -249,8 +250,9 @@ public class AntecipationRequestActivity extends AppCompatActivity {
         getDataFromSQLite();
     }
 
+
     private void getDataFromSQLite() {
-        // AsyncTask is used that SQLite operation not blocks the UI Thread.
+        // AsyncTask   é usado para que a operação SQLite não bloqueie a UI Thread.
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... params) {
@@ -268,6 +270,7 @@ public class AntecipationRequestActivity extends AppCompatActivity {
         }.execute();
     }
 
+    // botão voltar na Toolbar
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // handle arrow click here
@@ -279,6 +282,7 @@ public class AntecipationRequestActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //Enviar dados banco de dados
     private void postDataToSQLite() {
         if (!edtDatePayment.getText().toString().trim().equals(date)) {
 
@@ -292,14 +296,14 @@ public class AntecipationRequestActivity extends AppCompatActivity {
 
             databaseHelper.addNotaFiscal(notaFiscal);
 
-            // Snack Bar to show success message that record saved successfully
+
             Toast.makeText(activity, "Solicitação enviada com sucesso", Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(activity, "A data não pode ser a mesma", Toast.LENGTH_LONG).show();
         }
 
     }
-
+    //Limpar campos
     private void emptyInputEditText() {
         edtNumberNf.setText(null);
         edtDescription.setText(null);

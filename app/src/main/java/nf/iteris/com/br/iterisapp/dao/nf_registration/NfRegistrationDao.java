@@ -63,8 +63,9 @@ public class NfRegistrationDao extends SQLiteOpenHelper {
         db.insert(TABELA_NOME, null, cv);
         db.close();
     }
+
     public List<NfRegistration> getAllUser() {
-        // array of columns to fetch
+
         String[] columns = {
                 COLUNA_NUMBER,
                 COLUNA_DESCRIPTION,
@@ -72,17 +73,12 @@ public class NfRegistrationDao extends SQLiteOpenHelper {
                 COLUNA_DATEPAYMENT,
                 COLUNA_STATUS
         };
-        // sorting orders
+
         String sortOrder =
                 COLUNA_NUMBER + " ASC";
         List<NfRegistration> nfList = new ArrayList<NfRegistration>();
         SQLiteDatabase db = this.getReadableDatabase();
-        // query the user table
-        /**
-         * Here query function is used to fetch records from user table this function works like we use sql query.
-         * SQL query equivalent to this query function is
-         * SELECT user_id,user_name,user_email,user_password FROM user ORDER BY user_name;
-         */
+
         Cursor cursor = db.query(TABELA_NOME, //Table to query
                 columns,    //columns to return
                 null,        //columns for the WHERE clause
@@ -91,7 +87,7 @@ public class NfRegistrationDao extends SQLiteOpenHelper {
                 null,       //filter by row groups
                 sortOrder); //The sort order
 
-        // Traversing through all rows and adding to list
+
         if (cursor.moveToFirst()) {
             do {
                 NfRegistration nf = new NfRegistration();
@@ -103,26 +99,25 @@ public class NfRegistrationDao extends SQLiteOpenHelper {
                 nf.setStatus(cursor.getString(cursor.getColumnIndex(COLUNA_STATUS)));
 
 
-                // Adding user record to listNfRegistration
                 nfList.add(nf);
             } while (cursor.moveToNext());
         }
         cursor.close();
         db.close();
 
-        // return user list
+
         return nfList;
     }
 
     public NfRegistration pegarDados(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(TABELA_NOME, new String[] { COLUNA_NUMBER,
+        Cursor cursor = db.query(TABELA_NOME, new String[]{COLUNA_NUMBER,
                         COLUNA_DESCRIPTION,
                         COLUNA_DATEBILLING,
                         COLUNA_DATEPAYMENT,
-                        COLUNA_STATUS }, COLUNA_NUMBER + "=?",
-                new String[] { id }, null, null, null, null);
+                        COLUNA_STATUS}, COLUNA_NUMBER + "=?",
+                new String[]{id}, null, null, null, null);
         if (cursor != null) {
             cursor.moveToFirst();
 
@@ -139,7 +134,7 @@ public class NfRegistrationDao extends SQLiteOpenHelper {
 
     public void deleteNf(String nf) {
         SQLiteDatabase db = this.getWritableDatabase();
-        // delete user record by id
+
         db.delete(TABELA_NOME, COLUNA_NUMBER + " = ?",
                 new String[]{nf});
         db.close();

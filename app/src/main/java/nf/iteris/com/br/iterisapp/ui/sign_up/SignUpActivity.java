@@ -129,22 +129,20 @@ public class SignUpActivity extends AppCompatActivity {
 
             databaseHelper.addUser(user);
 
-            // Snack Bar to show success message that record saved successfully
+
             Toast.makeText(activity, getString(R.string.success_message), Toast.LENGTH_LONG).show();
             emptyInputEditText();
 
 
         } else {
-            // Snack Bar to show error message that record already exists
+
             Snackbar.make(rLayout, getString(R.string.error_not_sign_up), Snackbar.LENGTH_LONG).show();
         }
 
 
     }
 
-    /**
-     * This method is to empty all input edit text
-     */
+
     private void emptyInputEditText() {
         edtCpf.setText(null);
         edtName.setText(null);
