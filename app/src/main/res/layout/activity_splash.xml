@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/background_color"
     android:layout_height="match_parent"
+    android:background="@drawable/background_color"
     tools:context="nf.iteris.com.br.iterisapp.ui.splash.SplashActivity">
 
     <LinearLayout
@@ -13,25 +12,26 @@
         android:gravity="center">
 
         <ImageView
-            android:src="@drawable/smartphone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-             />
+            android:src="@drawable/icon_organiza"
+
+            />
 
     </LinearLayout>
 
     <TextView
         android:id="@+id/splash_txt_information"
-        android:textSize="18sp"
-        android:textColor="@color/colorWhite"
-        android:textStyle="italic"
-        android:gravity="center"
-        android:text="@string/splash_txt_information"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_margin="16dp" />
+        android:layout_margin="16dp"
+        android:gravity="center"
+        android:text="@string/splash_txt_information"
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp"
+        android:textStyle="italic" />
 
     <ProgressBar
         android:id="@+id/indeterminateBar"

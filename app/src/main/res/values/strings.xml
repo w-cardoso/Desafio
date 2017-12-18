@@ -13,15 +13,15 @@
     <string name="home_screen_btn_sign_up">Cadastre-se</string>
     <string name="home_screen_btn_sign_in">Entre</string>
     <string name="list_nf_edt_search">Buscar</string>
-    <string name="list_nf_btn_sign_up">Cadastrar NF</string>
+    <string name="list_nf_btn_sign_up">Cadastrar Nota Fiscal</string>
     <string name="login_edt_cpf">Digite seu CPF</string>
     <string name="login_edt_password">Digite sua senha</string>
     <string name="login_btn_sign_in">Entrar</string>
     <string name="nf_registration_edt_numbernf">Digite o numero da tota fiscal</string>
-    <string name="nf_registration_edt_description">Digite a descrição da NF</string>
+    <string name="nf_registration_edt_description">Digite a descrição da Nota Fiscal</string>
     <string name="nf_registration_edt_date_billing">Digite a data de faturamento</string>
     <string name="nf_registration_edt_date_payment">Digite a data de pagamento</string>
-    <string name="nf_registration_btn_cadastrar">Cadastrar NF</string>
+    <string name="nf_registration_btn_cadastrar">Cadastrar Nota Fiscal</string>
     <string name="sign_up_edt_cpf">Digite seu CPF</string>
     <string name="sign_up_edt_name">Digite seu nome</string>
     <string name="sign_up_edt_password">Digite sua senha</string>
@@ -30,7 +30,7 @@
     <string name="dialog_aprov_reprov_btn_reprovar">Reprovar</string>
     <string name="dialog_aprov_reprov_btn_aprovar">Aprovar</string>
     <string name="dialog_rcv_edt_numbernf">Digite o numero da tota fiscal</string>
-    <string name="dialog_rcv_edt_description">Digite a descrição da NF</string>
+    <string name="dialog_rcv_edt_description">Digite a descrição da Nota Fiscal</string>
     <string name="dialog_rcv_edt_date_billing">Digite a data de faturamento</string>
     <string name="dialog_rcv_edt_date_payment">Digite a data de pagamento</string>
     <string name="dialog_rcv_btn_cancelar">Cancelar</string>
@@ -39,7 +39,7 @@
     <string name="item_antecipation_txt_status">Status</string>
     <string name="item_antecipation_txt_date_payment">Data Pagamento</string>
     <string name="item_antecipation_txt_nf">Nota Fiscal</string>
-    <string name="item_nf_registration_txt_number_nf">NF</string>
+    <string name="item_nf_registration_txt_number_nf">Nota Fiscal: </string>
     <string name="item_nf_registration_txt_description">Description</string>
     <string name="item_nf_registration_txt_date_payment">Data de Pagamento</string>
     <string name="item_nf_registration_txt_status">Status</string>

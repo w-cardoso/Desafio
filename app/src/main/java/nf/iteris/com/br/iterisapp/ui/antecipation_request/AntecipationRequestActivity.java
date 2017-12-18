@@ -163,6 +163,7 @@ public class AntecipationRequestActivity extends AppCompatActivity {
                                         dataAntecipationDao.deleteNf(n);
                                         startActivity(new Intent(activity, AntecipationRequestActivity.class));
                                         Toast.makeText(activity, "Antecipação confirmada", Toast.LENGTH_LONG).show();
+                                        finish();
                                     }
                                 });
 
@@ -170,6 +171,7 @@ public class AntecipationRequestActivity extends AppCompatActivity {
                                     @Override
                                     public void onClick(View v) {
                                         dialogDados.dismiss();
+                                        finish();
 
                                     }
                                 });

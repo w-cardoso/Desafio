@@ -167,6 +167,7 @@ public class ListNfActivity extends AppCompatActivity {
                             String n = dados.getNumber().toString();
                             dao.deleteNf(n);
                             startActivity(new Intent(ListNfActivity.this, ListNfActivity.class));
+                            finish();
 
                         }
                     }
@@ -176,10 +177,12 @@ public class ListNfActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         dialog.dismiss();
+                        finish();
 
                     }
                 });
                 dialog.show();
+
 
             }
 
